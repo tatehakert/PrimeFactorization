@@ -58,52 +58,6 @@ def findFactors1(num):
     return trivial_factors
 
 
-def findFactors2(num):
-    n = num
-    sqrtN = math.ceil(math.sqrt(n))
-    print("sqrtN: ",sqrtN)
-    factors = []
-    primes = getPrimesBetween(2,sqrtN)
-
-
-
-    for p in primes:
-
-        while n % p == 0:
-            n = int(n / p)
-            factors.append(p)
-        if n == 1:
-            break
-
-    if n != 1 and isPrime(n):
-       factors.append(n)
-
-    print("prime factors of ", num, ": ", *factors)
-
-def findFactors3(num):
-    n = num
-    sqrtN = math.ceil(math.sqrt(n))
-    print("sqrtN: ",sqrtN)
-    factors = []
-
-    #factor out the 2s --> skip all evens after this
-    while n % 2 == 0:
-        n = int(n / 2)
-        factors.append(2)
-
-    for f in range(3, sqrtN+1, 2):
-
-        while n % f == 0:
-            n = int(n / f)
-            factors.append(f)
-
-        if n == 1:
-            break
-
-    if n != 1 and isPrime(n):
-       factors.append(n)
-
-    print("prime factors of ", num, ": ", *factors)
 
 #Pollard’s rho algorithm:  This algorithm factors a number n=pq. It works by generating a sequence of pseudorandom numbers using a function:
 #g(x) = (x2 + 1) mod n
@@ -174,15 +128,6 @@ def readInSemiPrimes(fileName):
             semiPrimeList.append(semiPrime)
         return semiPrimeList
 
-def autolabel(rects):
-    """Attach a text label above each bar in *rects*, displaying its height."""
-    for rect in rects:
-        height = rect.get_height()
-        ax.annotate('{}'.format(height),
-                    xy=(rect.get_x() + rect.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points vertical offset
-                    textcoords="offset points",
-                    ha='center', va='bottom')
 
 # ---------------- MAIN -----------------
 
